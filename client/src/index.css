@@ -39,3 +39,19 @@ body {
 .dark .post-content a {
   color: red;
 }
+
+select {
+  color: black; /* Change the text color of the entire select dropdown */
+}
+
+select option {
+  color: black; /* Change the text color of the options */
+}
+
+select, textarea {
+  color: black; /* Ensure both select dropdown and textarea text is black */
+}
+
+textarea {
+  background-color: white; /* Optional: you can set a background color if needed */
+}
