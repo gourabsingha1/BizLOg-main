@@ -6,7 +6,8 @@ import {
   signout,
   test,
   updateUser,
-  getInvestors
+  getInvestors,
+  getTopInvestors
 } from '../controllers/user.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
 
@@ -20,6 +21,7 @@ router.delete('/delete/:userId', verifyToken, deleteUser);
 router.post('/signout', signout);
 router.get('/getusers', getUsers);
 router.get('/investors', getInvestors);
+router.get('/topinvestors', getTopInvestors);
 router.get('/:userId', getUser);
 
 

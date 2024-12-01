@@ -149,3 +149,12 @@ export const getInvestors = async (req, res) => {
     res.status(500).json({ message: "Error fetching investors", error: err.message });
   }
 };
+
+export const getTopInvestors = async (req, res) => {
+  try {
+    const investors = await User.find({ isAdmin: false }).sort({ averageRating: -1 });
+    res.status(200).json(investors);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching investors", error: err.message });
+  }
+};

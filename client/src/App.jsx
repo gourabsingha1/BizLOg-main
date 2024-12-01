@@ -18,6 +18,7 @@ import Investors from './pages/Investors';
 import { ToastContainer } from 'react-toastify';
 import FloatingChatBot from './utils/FloatingChatBot';
 import AddReview from './pages/AddReview';
+import InvestorsList from './pages/TopInvestors';
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
         <Route path='/search' element={<Search />} />
         <Route path="/investors" element={<Investors />} />
         <Route path="/add-review" element={<AddReview />} />
+        <Route path="/top-investors" element={<InvestorsList />} />
         <Route element={<PrivateRoute />}>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/create-post' element={<CreatePost />} />

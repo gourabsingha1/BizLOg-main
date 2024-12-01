@@ -6,9 +6,8 @@ const AddReview = () => {
   const [reviewText, setReviewText] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Simulate getting the pitcherId (e.g., from local storage)
 //   const pitcherId = localStorage.getItem("username");
-  const pitcherId = '673c9c8794f16cf4b9304ce0';
+const pitcherId = '673c9c8794f16cf4b9304ce0';
 
   useEffect(() => {
     const fetchInvestors = async () => {
@@ -39,25 +38,40 @@ const AddReview = () => {
       return;
     }
 
+    if (!selectedInvestor) {
+      alert("Please select an investor.");
+      return;
+    }
+
+    if (!reviewText.trim()) {
+      alert("Review cannot be empty.");
+      return;
+    }
+
     try {
-      const response = await fetch("/api/reviews/add", {
+      const response = await fetch("http://localhost:5000/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          investorId: selectedInvestor,
-          pitcherId,
-          reviewText,
+          InvestorId: selectedInvestor,
+          PitcherId: pitcherId,
+          ReviewText: reviewText,
         }),
       });
 
       if (!response.ok) {
-        throw new Error("Failed to add review");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to add review");
       }
 
       const data = await response.json();
-      alert("Review added successfully!");
+      alert(
+        `Review added successfully! Sentiment Score: ${data.Score.toFixed(
+          2
+        )}, Summary: ${data.Summary}`
+      );
       setReviewText(""); // Clear the input field
     } catch (error) {
       console.error("Error adding review:", error);
@@ -92,6 +106,8 @@ const AddReview = () => {
           <textarea
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
+            rows="4"
+            placeholder="Write your review here..."
           />
         </label>
         <button type="submit">Submit</button>

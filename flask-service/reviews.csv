@@ -1,21 +1,46 @@
-Id,InvestorId,PitcherId,InvestorName,HelpfulnessNumerator ,HelpfulnessDenominator ,Score,Time,Summary,Text
+Id,InvestorId,PitcherId,InvestorName,HelpfulnessNumerator,HelpfulnessDenominator,Score,Time,Summary,Text
 1.00E+00,668358e3480081b94e4909da,6683102921a1e7103c2780e3,Mukesh,1,1,5,1303862400," Good personality, very professional","I found Mukesh very professional. He knows manners, talks very nice, he is humorous. The relationship was very good. No conflicts or dissatisfaction came ever."
-2,668358e3480081b94e4909db       ,6683102921a1e7103c2780e4,Sunita,3,4,4,1303958800, Approachable and thoughtful    ,"Sunita listened carefully to our pitch and provided insightful feedback. She was approachable, though there was some delay in her responses."
-3,668358e3480081b94e4909dc       ,6683102921a1e7103c2780e5,Rahul       ,2,5,3,1303958800,Good but could improve communication,"Rahul seemed knowledgeable, but his communication style was slightly intimidating. There is room for improvement."
+2,668358e3480081b94e4909db,6683102921a1e7103c2780e4,Sunita,3,4,4,1303958800, Approachable and thoughtful,"Sunita listened carefully to our pitch and provided insightful feedback. She was approachable, though there was some delay in her responses."
+3,668358e3480081b94e4909dc,6683102921a1e7103c2780e5,Rahul,2,5,3,1303958800,Good but could improve communication,"Rahul seemed knowledgeable, but his communication style was slightly intimidating. There is room for improvement."
 4,668358e3480081b94e4909dd,6683102921a1e7103c2780e6,Priya,4,4,5,1304055200,Very insightful and helpful,Priya provided a lot of constructive advice and seemed genuinely interested in our idea. A great experience overall.
-5,668358e3480081b94e4909de       ,6683102921a1e7103c2780e7,Karan,1,3,2,1304151600,Unresponsive and dismissive,Karan did not seem interested in our pitch and was unresponsive to questions. Not a positive experience.
+5,668358e3480081b94e4909de,6683102921a1e7103c2780e7,Karan,1,3,2,1304151600,Unresponsive and dismissive,Karan did not seem interested in our pitch and was unresponsive to questions. Not a positive experience.
 6,668358e3480081b94e4909df,6683102921a1e7103c2780e8,Anjali,3,3,5,1304248000,Excellent mentor,"Anjali went out of her way to mentor us. Her feedback was invaluable, and her demeanor was positive and encouraging."
-7,668358e3480081b94e4909e0       ,6683102921a1e7103c2780e9      ,Arjun,2,3,4,1304440800,Knowledgeable but rushed,"Arjun is clearly experienced, but the meeting felt rushed. We would have appreciated more time to discuss our ideas."
+7,668358e3480081b94e4909e0,6683102921a1e7103c2780e9,Arjun,2,3,4,1304440800,Knowledgeable but rushed,"Arjun is clearly experienced, but the meeting felt rushed. We would have appreciated more time to discuss our ideas."
 8,668358e3480081b94e4909e1,6683102921a1e7103c2780ea,Neha,0,1,1,1304537200,Very critical and uninterested,Neha was overly critical and appeared disinterested throughout the meeting. It was a disappointing interaction.
 9,668358e3480081b94e4909e2,6683102921a1e7103c2780eb,Ramesh,5,5,5,1304633600,A wonderful experience,"Ramesh was an excellent listener and gave thoughtful, actionable feedback. We felt highly motivated after our meeting."
-10,668358e3480081b94e4909e3,6683102921a1e7103c2780ec,Sneha       ,1,2,3,1304730000,Helpful but vague,Sneha gave some useful pointers but lacked specific feedback on certain areas. The interaction was average overall.
+10,668358e3480081b94e4909e3,6683102921a1e7103c2780ec,Sneha,1,2,3,1304730000,Helpful but vague,Sneha gave some useful pointers but lacked specific feedback on certain areas. The interaction was average overall.
 11,668358e3480081b94e4909e4,6683102921a1e7103c2780ed,Varun,2,3,4,1304826400,Friendly but slow to decide,"Varun was friendly and supportive but took longer than expected to make a decision. Overall, a good interaction."
-12,668358e3480081b94e4909e5,6683102921a1e7103c2780ee      ,Aisha,3,3,5,1304922800,Brilliant and encouraging  ,Aisha had a great attitude and provided inspiring feedback. Her enthusiasm was contagious.
+12,668358e3480081b94e4909e5,6683102921a1e7103c2780ee,Aisha,3,3,5,1304922800,Brilliant and encouraging,Aisha had a great attitude and provided inspiring feedback. Her enthusiasm was contagious.
 13,668358e3480081b94e4909e6,6683102921a1e7103c2780ef,Sanjay,1,2,2,1305019200,"Too critical, lacking courtesy",Sanjay was overly critical without offering constructive alternatives. The tone could have been more professional.
 14,668358e3480081b94e4909e7,6683102921a1e7103c2780f0,Tanya,4,4,5,1305115600,An excellent motivator,Tanya motivated our team and provided actionable advice. A thoroughly enriching experience.
 15,668358e3480081b94e4909e8,6683102921a1e7103c2780f1,Rohit,0,2,1,1305212000,Dismissive and uninterested,Rohit barely listened to our pitch and seemed preoccupied. The interaction felt pointless.
 16,668358e3480081b94e4909e9,6683102921a1e7103c2780f2,Meera,5,6,5,1305308400,Thoughtful and innovative  ,Meera brought innovative ideas to the table and showed genuine interest in helping us improve. Highly recommended!
 17,668358e3480081b94e4909ea,6683102921a1e7103c2780f3,Raj,3,5,3,1305404800,Knowledgeable but condescending,"Raj was knowledgeable, but his tone came off as condescending at times. It was a mixed experience."
 18,668358e3480081b94e4909eb,6683102921a1e7103c2780f4,Ishita,2,2,4,1305501200,Professional and prompt,"Ishita provided clear, concise feedback and was very prompt. The discussion was highly professional."
-19,668358e3480081b94e4909ec,6683102921a1e7103c2780f5      ,Akash,1,3,2,1305597600,Lacked depth and clarity,Akash seemed disengaged and didn’t provide much actionable feedback. The discussion felt shallow.
+19,668358e3480081b94e4909ec,6683102921a1e7103c2780f5,Akash,1,3,2,1305597600,Lacked depth and clarity,Akash seemed disengaged and didn’t provide much actionable feedback. The discussion felt shallow.
 20,668358e3480081b94e4909ed,6683102921a1e7103c2780f6,Pooja,4,4,5,1305694000,Very approachable and insightful,Pooja listened intently and offered thoughtful suggestions. The session was extremely valuable.
+21,67408722967d5a98ed1b6d5b,673c9c8794f16cf4b9304ce0,Anonymous,2,7,4.14,1732976568,Awesome guy!,Awesome guy!
+22,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,2,7,4.06,1732976614,great guyyy,great guyyy
+23,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,1,6,4.06,1732976625,awesome,awesome
+24,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,2,7,4.06,1732976781,awesome man,awesome man
+25,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.05,1732976813,bad guy. worst man ever,bad guy. worst man ever
+26,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,4,9,-2.38,1732976830,worst worst worst worst,worst worst worst worst
+27,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,4,9,-2.38,1732977580,worst worst worst worst,worst worst worst worst
+28,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,4,9,-2.38,1732977619,worst worst worst worst,worst worst worst worst
+29,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,4,9,-2.38,1732977680,worst worst worst worst,worst worst worst worst
+30,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,4,9,-2.38,1732977831,worst worst worst worst,worst worst worst worst
+31,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,6,11,4.93,1732978000,best best best good awesome nice,best best best good awesome nice
+32,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,6,11,4.93,1732978591,best best best good awesome nice,best best best good awesome nice
+33,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,6,11,4.93,1732978678,best best best good awesome nice,best best best good awesome nice
+34,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732987258,worst worst worst worst worst,worst worst worst worst worst
+35,67407f7792fcdefde781a150,673c9c8794f16cf4b9304ce0,Anonymous,7,12,4.96,1732987289,best best best best best good awesome,best best best best best good awesome
+36,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732987413,worst worst worst worst worst,worst worst worst worst worst
+37,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732987413,worst worst worst worst worst,worst worst worst worst worst
+38,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732987688,worst worst worst worst worst,worst worst worst worst worst
+39,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732987752,worst worst worst worst worst,worst worst worst worst worst
+40,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732987753,worst worst worst worst worst,worst worst worst worst worst
+41,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732987826,worst worst worst worst worst,worst worst worst worst worst
+42,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732987839,worst worst worst worst worst,worst worst worst worst worst
+43,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732988267,worst worst worst worst worst,worst worst worst worst worst
+44,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732988315,worst worst worst worst worst,worst worst worst worst worst
+45,67407f7792fcdefde781a150,673c9c8794f16cf4b9304ce0,Anonymous,7,12,4.96,1732988343,best best best best best good awesome,best best best best best good awesome
