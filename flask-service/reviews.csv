@@ -44,3 +44,38 @@ Id,InvestorId,PitcherId,InvestorName,HelpfulnessNumerator,HelpfulnessDenominator
 43,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732988267,worst worst worst worst worst,worst worst worst worst worst
 44,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Anonymous,5,10,-2.42,1732988315,worst worst worst worst worst,worst worst worst worst worst
 45,67407f7792fcdefde781a150,673c9c8794f16cf4b9304ce0,Anonymous,7,12,4.96,1732988343,best best best best best good awesome,best best best best best good awesome
+46,investor123,pitcher456,Pitcher Profile,7,12,2,2024-12-01 12:46:49.136387,The investor was very professional and insightful.,The investor was very professional and insightful.
+47,6740897259199c328928cde8,pitcher456,Pitcher Profile,7,12,2,2024-12-01 12:47:27.381219,The investor was very professional and insightful.,The investor was very professional and insightful.
+48,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,2,2024-12-01 12:49:40.753753,The investor was very professional and insightful.,The investor was very professional and insightful.
+49,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,2,2024-12-01 13:20:01.074530,The investor was very professional and insightful.,The investor was very professional and insightful.
+50,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 13:23:58.072764,worst worst worst worst worst,worst worst worst worst worst
+51,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 13:27:35.832924,best best best best best good awesome,best best best best best good awesome
+52,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 13:31:17.367828,worst worst worst worst worst,worst worst worst worst worst
+53,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 13:45:30.846977,best best best best best good awesome,best best best best best good awesome
+54,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 13:48:32.781820,best best best best best good awesome,best best best best best good awesome
+55,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 13:49:10.648721,worst worst worst worst worst,worst worst worst worst worst
+56,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 14:07:14.925867,worst worst worst worst worst,worst worst worst worst worst
+57,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 14:09:47.668575,worst worst worst worst worst,worst worst worst worst worst
+58,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 14:11:59.757048,best best best best best good awesome,best best best best best good awesome
+59,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 14:14:45.833700,best best best best best good awesome,best best best best best good awesome
+60,6740897259199c328928cde8,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 14:20:18.038545,worst worst worst worst worst,worst worst worst worst worst
+61,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 20:52:42.789555,worst worst worst worst worst,worst worst worst worst worst
+62,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 20:53:19.268261,best best best best best good awesome,best best best best best good awesome
+63,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 20:56:24.422228,best best best best best good awesome,best best best best best good awesome
+64,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 20:56:58.765763,worst worst worst worst worst,worst worst worst worst worst
+65,6683abceae86437d5fffa069,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 20:57:24.520178,worst worst worst worst worst,worst worst worst worst worst
+66,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 20:58:44.341564,worst worst worst worst worst,worst worst worst worst worst
+67,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 20:58:48.308083,worst worst worst worst worst,worst worst worst worst worst
+68,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 20:59:08.933318,best best best best best good awesome,best best best best best good awesome
+69,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,1,6,2,2024-12-01 21:00:49.249190,average,average
+70,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 21:38:55.031746,best best best best best good awesome,best best best best best good awesome
+71,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,5,2024-12-01 21:45:39.008182,best best best best best good awesome,best best best best best good awesome
+72,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,1,6,2,2024-12-01 21:56:09.297067,fseaf,fseaf
+73,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,2,2024-12-01 22:10:23.433032,worst worst worst worst worst,worst worst worst worst worst
+74,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,3,2024-12-01 22:10:43.734757,best best best best best good awesome,best best best best best good awesome
+75,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,3,2024-12-01 22:10:54.721725,best best best best best good awesome,best best best best best good awesome
+76,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,3,2024-12-01 22:11:05.627807,best best best best best good awesome,best best best best best good awesome
+77,6683102921a1e7103c2780e3,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,3,2024-12-01 22:11:18.913410,best best best best best good awesome,best best best best best good awesome
+78,6687eda9c9e4016acd99f14d,673c9c8794f16cf4b9304ce0,Pitcher Profile,5,10,1,2024-12-01 22:15:14.726827,worst worst worst worst worst,worst worst worst worst worst
+79,6687eda9c9e4016acd99f14d,673c9c8794f16cf4b9304ce0,Pitcher Profile,1,6,2,2024-12-01 22:15:48.399586,best,best
+80,6687eda9c9e4016acd99f14d,673c9c8794f16cf4b9304ce0,Pitcher Profile,7,12,4,1733071957,best best best best best good awesome,best best best best best good awesome

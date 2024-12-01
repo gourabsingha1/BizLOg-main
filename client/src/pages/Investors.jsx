@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import PaymentModal from './PaymentModal'; // Import the PaymentModal component
+import PaymentModal from './PaymentModal';
 
 export default function Investors() {
   const [users, setUsers] = useState([]);
@@ -139,7 +139,7 @@ export default function Investors() {
                 />
                 <h2 className="text-lg text-gray-500 font-semibold">{user.username}</h2>
                 <p className="text-gray-500 text-sm">{user.email}</p>
-                <div className="mt-2">{renderStars(Math.round(user.averageSentimentScore || 0))}</div>
+                <div className="mt-2">{renderStars(Math.round(user.averageRating || 0))}</div>
                 <button
                   onClick={() => openModal(user._id)}
                   className="mt-4 bg-red-500 text-white py-2 px-4 rounded-full hover:-translate-y-1 hover:scale-110 hover:bg-green-400 duration-300"

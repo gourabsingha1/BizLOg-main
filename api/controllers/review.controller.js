@@ -1,58 +1,69 @@
-import User from "../models/user.model.js";
-
-const FLASK_API_BASE_URL = "http://localhost:5000"; // Update if Flask runs on a different host/port
+const FLASK_API_URL = "http://127.0.0.1:5000/api";
 
 export const addReview = async (req, res) => {
   const { investorId, pitcherId, reviewText } = req.body;
 
   try {
-    // Check if the investor exists
-    const investor = await User.findById(investorId);
-    if (!investor) return res.status(404).json({ message: "Investor not found" });
-
-    // Send review to Flask for sentiment analysis
-    const flaskResponse = await post(`${FLASK_API_BASE_URL}/analyze`, {
-      InvestorId: investorId,
-      PitcherId: pitcherId,
-      ReviewText: reviewText,
-    });
-
-    const { SentimentScore } = flaskResponse.Score;
-
-    // Add the review to the investor's database
-    investor.reviews.push({
+    const response = await post(`${FLASK_API_URL}/add-review`, {
+      investorId,
       pitcherId,
       reviewText,
-      sentimentScore: 140,
     });
 
-    // Recalculate the average rating using Flask
-    const ratingResponse = await get(`${FLASK_API_BASE_URL}/investor-rating/${investorId}`);
-    const { Rating } = ratingResponse.Rating;
-
-    // Update the investor's average rating
-    investor.averageRating = Rating;
-
-    await investor.save();
-    res.status(200).json({ message: "Review added successfully", investor });
-  } catch (err) {
-    res.status(500).json({ message: "Error adding review", error: err.message });
+    if (response.status === 200) {
+      return res.status(200).json({
+        message: "Review added successfully",
+        sentimentScore: response.data.sentimentScore,
+      });
+    } else {
+      return res.status(response.status).json({
+        message: "Failed to add review",
+        error: response.data,
+      });
+    }
+  } catch (error) {
+    console.error("Error adding review:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
-export const getInvestorRating = async (req, res) => {
+export const getRatings = async (req, res) => {
   const { investorId } = req.params;
 
   try {
-    const investor = await User.findById(investorId);
-    if (!investor) return res.status(404).json({ message: "Investor not found" });
+    const response = await get(`${FLASK_API_URL}/get-ratings/${investorId}`);
 
-    // Fetch the average rating from Flask
-    const ratingResponse = await get(`${FLASK_API_BASE_URL}/investor-rating/${investorId}`);
-    const { Rating } = ratingResponse.data;
+    if (response.status === 200) {
+      return res.status(200).json({
+        averageRating: response.data.averageRating,
+        reviews: response.data.reviews,
+      });
+    } else {
+      return res.status(response.status).json({
+        message: "Failed to fetch ratings",
+        error: response.data,
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching ratings:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
 
-    res.status(200).json({ investorId, rating: Rating });
-  } catch (err) {
-    res.status(500).json({ message: "Error fetching investor rating", error: err.message });
+export const trainModel = async (req, res) => {
+  try {
+    const response = await post(`${FLASK_API_URL}/train-model`);
+
+    if (response.status === 200) {
+      return res.status(200).json({ message: response.data.message });
+    } else {
+      return res.status(response.status).json({
+        message: "Failed to train the model",
+        error: response.data,
+      });
+    }
+  } catch (error) {
+    console.error("Error training the model:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };

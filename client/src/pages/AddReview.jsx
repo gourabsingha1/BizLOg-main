@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 const AddReview = () => {
-  const [investors, setInvestors] = useState([]); // Initialize as empty array
+  const [investors, setInvestors] = useState([]);
   const [selectedInvestor, setSelectedInvestor] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [loading, setLoading] = useState(true);
 
-//   const pitcherId = localStorage.getItem("username");
-const pitcherId = '673c9c8794f16cf4b9304ce0';
+  //   const pitcherId = localStorage.getItem("username");
+  const pitcherId = '673c9c8794f16cf4b9304ce0';
 
   useEffect(() => {
     const fetchInvestors = async () => {
@@ -20,13 +20,14 @@ const pitcherId = '673c9c8794f16cf4b9304ce0';
           throw new Error("Failed to fetch investors");
         }
         const data = await response.json();
-        setInvestors(data); // Populate investors
+        setInvestors(data);
       } catch (error) {
         console.error("Error fetching investors:", error);
       } finally {
-        setLoading(false); // Mark as not loading
+        setLoading(false);
       }
     };
+
     fetchInvestors();
   }, []);
 
@@ -37,45 +38,43 @@ const pitcherId = '673c9c8794f16cf4b9304ce0';
       alert("Pitcher not logged in. Please log in to add a review.");
       return;
     }
-
     if (!selectedInvestor) {
       alert("Please select an investor.");
       return;
     }
-
     if (!reviewText.trim()) {
       alert("Review cannot be empty.");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:5000/analyze", {
+      const response = await fetch("http://127.0.0.1:5000/api/add-review", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          InvestorId: selectedInvestor,
-          PitcherId: pitcherId,
-          ReviewText: reviewText,
+          investorId: selectedInvestor,
+          pitcherId,
+          reviewText,
         }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to add review");
+        throw new Error(errorData.message || "Failed to add review");
       }
 
       const data = await response.json();
       alert(
-        `Review added successfully! Sentiment Score: ${data.Score.toFixed(
+        `Review added successfully! Sentiment Score: ${data.sentimentScore.toFixed(
           2
-        )}, Summary: ${data.Summary}`
+        )}`
       );
-      setReviewText(""); // Clear the input field
+      setReviewText("");
     } catch (error) {
       console.error("Error adding review:", error);
-      alert("Error adding review");
+      alert("Failed to add review. Please try again.");
     }
   };
 

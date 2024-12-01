@@ -1,83 +1,138 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from pymongo import MongoClient
+from bson import ObjectId
 import pandas as pd
-from models.roberta_sentiment_analysis import analyze_sentiment
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from transformers import pipeline
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import nltk
 import os
+import time
+
+nltk.download("vader_lexicon")
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)
 
-# Define the reviews file
-reviews_file = "reviews.csv"
+client = MongoClient("mongodb+srv://soumyadeep:soum%402106@mern-estate.hu6awzx.mongodb.net/")
+db = client["mern-blog"]
+users_collection = db["users"]
 
-# Initialize VADER analyzer
+roberta_model = pipeline("sentiment-analysis")
 vader_analyzer = SentimentIntensityAnalyzer()
 
-def update_reviews_csv(review_data):
-    """Append new review data directly to the reviews.csv file."""
-    df = pd.DataFrame([review_data])
-    if not os.path.exists(reviews_file):
-        df.to_csv(reviews_file, index=False)
-    else:
-        df.to_csv(reviews_file, mode='a', header=False, index=False)
+CSV_FILE = "reviews.csv"
+if not os.path.exists(CSV_FILE):
+    # Initialize the CSV file with column headers
+    pd.DataFrame(columns=[
+        "Id", "InvestorId", "PitcherId", "ProfileName",
+        "HelpfulnessNumerator", "HelpfulnessDenominator",
+        "Score", "Time", "Summary", "Text"
+    ]).to_csv(CSV_FILE, index=False)
 
-@app.route('/analyze', methods=['POST'])
-def analyze_review():
-    """Analyze review sentiment and update the reviews.csv file."""
+def analyze_sentiment(review_text):
+    """Analyzes sentiment using both RoBERTa and Vader."""
+    roberta_result = roberta_model(review_text)[0]
+    vader_result = vader_analyzer.polarity_scores(review_text)
+
+    # Combine RoBERTa and Vader results for sentiment score
+    sentiment_score = (roberta_result["score"] + vader_result["compound"]) / 2
+    return sentiment_score
+
+
+def calculate_star_rating(sentiment_score, investor_id):
+    """Convert sentiment score (0-1) to star rating (1-5)."""
+    investor = users_collection.find_one({"_id": investor_id})
+    if not investor:
+        return jsonify({"error": "Investor not found"}), 404
+    existing_reviews = investor.get("reviews", [])
+    existing_scores = [review["sentimentScore"] for review in existing_reviews]
+    updated_scores = existing_scores + [sentiment_score]
+    average_sentiment_score = sum(updated_scores) / len(updated_scores)
+    return max(1, round(average_sentiment_score * 5))
+
+@app.route("/")
+def home():
+    return {"message": "Flask backend is running!"}
+
+@app.route("/api/add-review", methods=["POST"])
+def add_review():
     data = request.json
-    pitcher_id = data.get("PitcherId")
-    investor_id = data.get("InvestorId")
-    review_text = data.get("ReviewText")
-    
-    if not (pitcher_id and investor_id and review_text):
-        return jsonify({"error": "Missing fields"}), 400
+    investor_id = data["investorId"]
+    pitcher_id = data["pitcherId"]
+    review_text = data["reviewText"]
 
-    # Perform sentiment analysis using RoBERTa and VADER
-    roberta_score = analyze_sentiment(review_text)
-    vader_score = vader_analyzer.polarity_scores(review_text)['compound']
-    
-    # Final sentiment score (average of both models)
-    sentiment_score = round((roberta_score + vader_score) / 2, 3)
-    
-    # Convert sentiment score to a scale of 0-5
-    score = round(sentiment_score * 5, 2)
+    try:
+        investor_id = ObjectId(investor_id)
+        pitcher_id = ObjectId(pitcher_id)
+    except:
+        return jsonify({"error": "Invalid IDs"}), 400
 
-    # Create the review data to append
-    review_data = {
-        "Id": len(pd.read_csv(reviews_file)) + 1 if os.path.exists(reviews_file) else 1,
-        "InvestorId": investor_id,
-        "PitcherId": pitcher_id,
-        "ProfileName": "Anonymous",  # Placeholder for now
-        "HelpfulnessNumerator": len(review_text.split()),
-        "HelpfulnessDenominator": len(review_text.split()) + 5,  # Arbitrary denominator
-        "Score": score,
-        "Time": int(pd.Timestamp.now().timestamp()),
-        "Summary": review_text[:50],  # First 50 characters as summary
-        "Text": review_text,
+    sentiment_score = analyze_sentiment(review_text)
+
+    # Calculate helpfulness (dummy values for now)
+    helpfulness_numerator = len(review_text.split())
+    helpfulness_denominator = helpfulness_numerator + 5
+    score = calculate_star_rating(sentiment_score, investor_id)
+    summary = review_text[:50]
+
+    # Save review to MongoDB
+    review = {
+        "pitcherId": str(pitcher_id),
+        "reviewText": review_text,
+        "sentimentScore": sentiment_score,
     }
 
-    # Append the review to the reviews.csv file
-    update_reviews_csv(review_data)
+    result = users_collection.update_one(
+        {"_id": investor_id},
+        {
+            "$push": {"reviews": review},
+            "$set": {
+                "averageRating": calculate_star_rating(sentiment_score, investor_id)
+            },
+        },
+    )
+    if result.matched_count == 0:
+        return jsonify({"error": "Investor not found"}), 404
 
-    return jsonify(review_data), 200
+    new_entry = pd.DataFrame([{
+        "Id": len(pd.read_csv(CSV_FILE)) + 1,
+        "InvestorId": str(investor_id),
+        "PitcherId": str(pitcher_id),
+        "ProfileName": "Pitcher Profile",
+        "HelpfulnessNumerator": helpfulness_numerator,
+        "HelpfulnessDenominator": helpfulness_denominator,
+        "Score": score,
+        "Time": int(time.time()),
+        "Summary": summary,
+        "Text": review_text,
+    }])
+    new_entry.to_csv(CSV_FILE, mode="a", header=False, index=False)
 
-@app.route('/investor-rating/<investor_id>', methods=['GET'])
-def investor_rating(investor_id):
-    """Fetch average star rating for a specific investor."""
-    if not os.path.exists(reviews_file):
-        return jsonify({"error": "No reviews found"}), 404
-    
-    reviews = pd.read_csv(reviews_file)
-    investor_reviews = reviews[reviews['InvestorId'] == investor_id]
-    
-    if investor_reviews.empty:
-        return jsonify({"error": "No reviews for this investor"}), 404
-    
-    avg_score = investor_reviews['Score'].mean()
-    stars = round(avg_score, 2)  # Return the average score as the rating
+    return jsonify({"message": "Review added successfully", "sentimentScore": sentiment_score})
 
-    return jsonify({"InvestorId": investor_id, "Rating": stars}), 200
+@app.route("/api/get-ratings/<investor_id>", methods=["GET"])
+def get_ratings(investor_id):
+    try:
+        investor_id = ObjectId(investor_id)
+    except:
+        return jsonify({"error": "Invalid ID"}), 400
+
+    investor = users_collection.find_one({"_id": investor_id})
+    if not investor:
+        return jsonify({"error": "Investor not found"}), 404
+
+    return jsonify({
+        "averageRating": investor.get("averageRating", 0),
+        "reviews": investor.get("reviews", [])
+    })
+
+@app.route("/api/train-model", methods=["POST"])
+def train_model():
+    reviews_df = pd.read_csv(CSV_FILE)
+    # Here, you can integrate further training for your sentiment models.
+    # (For simplicity, this demo assumes models are pre-trained.)
+    return jsonify({"message": "Training initiated on new reviews!"})
 
 if __name__ == "__main__":
     app.run(debug=True)
