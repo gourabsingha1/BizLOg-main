@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../addReview.css"; // Link to the CSS file
 
 const AddReview = () => {
   const [investors, setInvestors] = useState([]);
@@ -6,8 +7,7 @@ const AddReview = () => {
   const [reviewText, setReviewText] = useState("");
   const [loading, setLoading] = useState(true);
 
-  //   const pitcherId = localStorage.getItem("username");
-  const pitcherId = '673c9c8794f16cf4b9304ce0';
+  const pitcherId = "673c9c8794f16cf4b9304ce0";
 
   useEffect(() => {
     const fetchInvestors = async () => {
@@ -79,18 +79,22 @@ const AddReview = () => {
   };
 
   if (loading) {
-    return <div>Loading investors...</div>;
+    return <div className="loading">Loading investors...</div>;
   }
 
   return (
-    <div className="add-review">
-      <h2>Add Review</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Select Investor:
+    <div className="add-review-container">
+      <h2 className="title">Add a Review</h2>
+      <form onSubmit={handleSubmit} className="review-form">
+        <div className="form-group">
+          <label htmlFor="investor-select" className="form-label">
+            Select Investor:
+          </label>
           <select
+            id="investor-select"
             value={selectedInvestor}
             onChange={(e) => setSelectedInvestor(e.target.value)}
+            className="form-input"
           >
             <option value="">--Choose an investor--</option>
             {investors.map((investor) => (
@@ -99,17 +103,23 @@ const AddReview = () => {
               </option>
             ))}
           </select>
-        </label>
-        <label>
-          Review:
+        </div>
+        <div className="form-group">
+          <label htmlFor="review-text" className="form-label">
+            Review:
+          </label>
           <textarea
+            id="review-text"
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
             rows="4"
+            className="form-input textarea"
             placeholder="Write your review here..."
           />
-        </label>
-        <button type="submit">Submit</button>
+        </div>
+        <button type="submit" className="submit-button">
+          Submit
+        </button>
       </form>
     </div>
   );
