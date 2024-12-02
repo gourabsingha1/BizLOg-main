@@ -1,0 +1,134 @@
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #f5f5f5;
+  }
+  
+  .investors-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #f5f5f5;
+  }
+  
+  .view-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .view-btn {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .view-btn.active {
+    background: #0066ff;
+    border-color: #0056d4;
+  }
+  
+  .view-btn:hover {
+    background: #444;
+  }
+  
+  .investors-list.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .investors-list.list,
+  .investors-list.compact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .investor-card {
+    background: #132232;
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .investors-list.list .investor-card,
+  .investors-list.compact .investor-card {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .investors-list.compact .investor-card {
+    padding: 10px;
+  }
+  
+  .investor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .investors-list.list .profile-picture,
+  .investors-list.compact .profile-picture {
+    width: 50px;
+    height: 50px;
+    margin: 0 15px 0 0;
+  }
+  
+  .investor-info {
+    text-align: left;
+  }
+  
+  .investor-username {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin: 5px 0;
+  }
+  
+  .investor-rating {
+    font-size: 0.9rem;
+    color: #ffffff;
+  }
+  
+  .single-star {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-right: 5px;
+  }
+  
+  .investors-list.compact .investor-username {
+    font-size: 1rem;
+  }
+  
+  .investors-list.compact .investor-rating {
+    font-size: 0.8rem;
+  }
+  

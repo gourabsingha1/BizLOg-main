@@ -130,19 +130,19 @@ export default function Investors() {
             users.map((user) => (
               <div
                 key={user._id}
-                className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:-translate-y-1 hover:scale-110 hover:bg-gray-300 duration-300"
+                className="bg-[#132232] rounded-lg shadow-md p-4 flex flex-col items-center hover:-translate-y-1 hover:scale-110 hover:bg-[#1b2f45] duration-300"
               >
                 <img
                   src={user.profilePicture}
                   alt={user.username}
                   className="w-24 h-24 rounded-full object-cover mb-4"
                 />
-                <h2 className="text-lg text-gray-500 font-semibold">{user.username}</h2>
-                <p className="text-gray-500 text-sm">{user.email}</p>
+                <h2 className="text-lg text-white font-semibold">{user.username}</h2>
+                <p className="text-white text-sm">{user.email}</p>
                 <div className="mt-2">{renderStars(Math.round(user.averageRating || 0))}</div>
                 <button
                   onClick={() => openModal(user._id)}
-                  className="mt-4 bg-red-500 text-white py-2 px-4 rounded-full hover:-translate-y-1 hover:scale-110 hover:bg-green-400 duration-300"
+                  className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-full hover:-translate-y-1 hover:scale-110 hover:bg-green-400 duration-300"
                 >
                   Upload Pitch
                 </button>
@@ -160,7 +160,7 @@ export default function Investors() {
             <h2 className="text-xl font-semibold mb-4">Upload Pitch</h2>
             <form onSubmit={handleFormSubmit}>
               <div className="mb-4">
-                <label htmlFor="companyName" className="text-red-600 block text-sm font-medium">
+                <label htmlFor="companyName" className="block text-sm font-medium">
                   Company Name/Startup Name :
                 </label>
                 <input
@@ -173,7 +173,7 @@ export default function Investors() {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="email" className="block text-red-600 text-sm font-medium">
+                <label htmlFor="email" className="block text-sm font-medium">
                   Email :
                 </label>
                 <input
@@ -186,7 +186,7 @@ export default function Investors() {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="pitch" className="text-red-600 block text-sm font-medium">
+                <label htmlFor="pitch" className="block text-sm font-medium">
                   Description/Pitch :
                 </label>
                 <textarea

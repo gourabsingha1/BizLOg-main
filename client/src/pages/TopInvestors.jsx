@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import "../topInvestors.css";
 
 const InvestorsList = () => {
   const [investors, setInvestors] = useState([]);
+  const [viewMode, setViewMode] = useState("grid"); // View mode state
 
   useEffect(() => {
     const fetchInvestors = async () => {
@@ -14,7 +16,7 @@ const InvestorsList = () => {
           throw new Error("Failed to fetch investors");
         }
         const data = await response.json();
-        setInvestors(data); // Populate investors
+        setInvestors(data);
       } catch (error) {
         console.error("Error fetching investors:", error);
       }
@@ -23,20 +25,45 @@ const InvestorsList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Top Investors</h1>
+    <div className="investors-container">
+      <div className="header">
+        <h1 className="title">Top Investors</h1>
+        <div className="view-options">
+          <button
+            className={`view-btn ${viewMode === "grid" ? "active" : ""}`}
+            onClick={() => setViewMode("grid")}
+          >
+            Grid
+          </button>
+          <button
+            className={`view-btn ${viewMode === "compact" ? "active" : ""}`}
+            onClick={() => setViewMode("compact")}
+          >
+            List
+          </button>
+        </div>
+      </div>
       {investors.length > 0 ? (
-        <ul>
+        <div className={`investors-list ${viewMode}`}>
           {investors.map((investor) => (
-            <li key={investor._id}>
-              <img src={investor.profilePicture} alt={investor.username} width="50" />
-              <p>{investor.username}</p>
-              <p>Average Rating: {investor.averageRating.toFixed(2)}</p>
-            </li>
+            <div key={investor._id} className="investor-card">
+              <img
+                className="profile-picture"
+                src={investor.profilePicture || "/default-avatar.png"}
+                alt={investor.username}
+              />
+              <div className="investor-info">
+                <h2 className="investor-username">{investor.username}</h2>
+                <p className="investor-rating">
+                  <span className="single-star">★</span>{Math.round(investor.averageRating)}{" "}
+                  ({investor.reviews.length})
+                </p>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
-        <p>No investors found.</p>
+        <p className="no-investors-message">No investors found.</p>
       )}
     </div>
   );

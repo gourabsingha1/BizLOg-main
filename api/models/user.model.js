@@ -33,7 +33,6 @@ const userSchema = new mongoose.Schema(
       },
     ],
     averageRating: { type: Number, default: 0 },
-    role: { type: String, enum: ['investor', 'pitcher'], required: false },
   },
   { timestamps: true },
 );

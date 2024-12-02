@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 import postRoutes from './routes/post.route.js';
-import reviewRoutes from './routes/review.route.js';
 import commentRoutes from './routes/comment.route.js';
 import sendmailerr from './routes/mailer.route.js'
 import notifyroutes  from './routes/notification.route.js'
@@ -39,7 +38,6 @@ app.use('/api/uploadpitch', notifyroutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
 app.use('/api/comment', commentRoutes);
-app.use('/api/reviews', reviewRoutes);
 
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
