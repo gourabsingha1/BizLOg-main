@@ -23,7 +23,6 @@ vader_analyzer = SentimentIntensityAnalyzer()
 
 CSV_FILE = "reviews.csv"
 if not os.path.exists(CSV_FILE):
-    # Initialize the CSV file with column headers
     pd.DataFrame(columns=[
         "Id", "InvestorId", "PitcherId", "ProfileName",
         "HelpfulnessNumerator", "HelpfulnessDenominator",
@@ -35,7 +34,6 @@ def analyze_sentiment(review_text):
     roberta_result = roberta_model(review_text)[0]
     vader_result = vader_analyzer.polarity_scores(review_text)
 
-    # Combine RoBERTa and Vader results for sentiment score
     sentiment_score = (roberta_result["score"] + vader_result["compound"]) / 2
     return sentiment_score
 
