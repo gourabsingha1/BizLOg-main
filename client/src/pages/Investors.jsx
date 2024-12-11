@@ -142,7 +142,7 @@ export default function Investors() {
                 <div className="mt-2">{renderStars(Math.round(user.averageRating || 0))}</div>
                 <button
                   onClick={() => openModal(user._id)}
-                  className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-full hover:-translate-y-1 hover:scale-110 hover:bg-green-400 duration-300"
+                  className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-full hover:-translate-y-1 hover:scale-110 hover:bg-blue-700 duration-300"
                 >
                   Upload Pitch
                 </button>
@@ -201,7 +201,7 @@ export default function Investors() {
               <div className="flex justify-end">
                 <button
                   type="button"
-                  className="inline-flex justify-center py-2 px-4 mr-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-800 hover:bg-gray-500"
+                  className="inline-flex justify-center py-2 px-4 mr-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-800 hover:bg-red-900"
                   onClick={closeModal}
                 >
                   Cancel
